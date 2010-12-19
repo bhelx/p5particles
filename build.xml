@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="p5particles" default="package" basedir="."> 
+	<property name="dist" value="dist"/>
+	<property name="bin" value="bin"/>
+	<property name="src" value="src"/>
+	<property name="dist" value="dist"/>
+	<property name="processing-core-lib" value="core-0191.jar"/>
+	
+  
+	<path id="master-classpath">
+		<fileset dir="lib">
+	    	<include name="${processing-core-lib}"/>
+	  	</fileset>
+	  	<pathelement path="${bin}"/>
+	</path>
+	
+	
+  	<target name="clean">
+    	<echo>Cleaning ${dist}</echo>
+  		<delete dir="${dist}" />
+		<echo>Cleaning ${bin}</echo>
+		<delete dir="${bin}" />	
+  	</target>
+	
+	<target name="init" depends="clean">
+		<echo>Recreating ${dist}</echo>
+		<mkdir dir="${dist}" />
+	 	<echo>Recreating ${bin}</echo>
+		<mkdir dir="${bin}" />	
+	</target>
+	
+  	<target name="compile" depends="init">
+    	<echo>Compiling</echo>
+  		
+  		<javac destdir="${bin}">
+  		  <src path="${src}"/>
+  		  <classpath refid="master-classpath"/>
+  		</javac>
+  	</target>
+	
+	<target name="package" depends="compile">
+		<echo>Packaging</echo>
+		
+		<manifestclasspath property="jar.classpath" jarfile="${dist}/p5particles.jar">
+		     <classpath refid="master-classpath" />
+		</manifestclasspath>
+		
+		<jar destfile="${dist}/p5particles.jar">
+	    	<fileset dir="${bin}" />
+	    	<fileset dir="${src}" />
+			<manifest>
+				<attribute name="Built-By" value="bhelx" />  
+			</manifest>
+		</jar>
+	</target>
+</project>
