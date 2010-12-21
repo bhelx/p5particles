@@ -2,6 +2,11 @@ Particle Physics System for Processing
 
 <hr />
 
+This is not quite ready. Still working on examples and testing. 
+Should be done by end of the year.
+
+<hr />
+
 Features:
 <ul>
    <li>internally uses PVector so no more wasteful vector conversion</li>
