@@ -11,18 +11,16 @@ import processing.core.PVector;
  *
  * @author Benjamin Eckel
  */
-public class MagneticForce implements Force {
-
-    private Particle a;
-    private Particle b;
+public class MagneticForce extends Force {
 
     protected MagneticForce() {}
     
     protected MagneticForce(Particle a, Particle b) {
-        this.a = a;
-        this.b = b;
+    	super();
+    	setParticles(a, b);
     }
 
+    @Override
     public void apply() {
         if (!a.fixed || !b.fixed) {
 
@@ -44,26 +42,5 @@ public class MagneticForce implements Force {
             }
         }
     }
-    
-
-    @Override
-    public void setParticles(Particle a, Particle b) {
-    	this.a = a;
-    	this.b = b;
-    }
-
-    @Override
-    public boolean involves(Particle p) {
-        return p.equals(a) || p.equals(b);
-    }
-
-    public Particle getA() {
-        return a;
-    }
-
-    public Particle getB() {
-        return b;
-    }
-
 
 }

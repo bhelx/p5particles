@@ -1,2 +1,17 @@
-I am still working on making tweaks to this project, it isn't quite in working order. Don't use it yet as it will change drastically in the next week or so.
+Particle Physics System for Processing
+
+<hr />
+
+Features:
+<ul>
+   <li>internally uses PVector so no more wasteful vector conversion</li>
+   <li>RK4 and Euler intergrators</li>
+   <li>Spring, Magnetic, ConstantGravitational, and Attractive forces</li>
+   <li>plug in your own integrators and Forces</li>
+   <li>uses a base Particle class for easy extenisbility</li>
+   <li>examples provided</li>
+</ul>
+
+<hr />
+
 

@@ -4,6 +4,7 @@ import com.datasingularity.processing.p5particles.ConstantGravitationalForce;
 import com.datasingularity.processing.p5particles.MagneticForce;
 import com.datasingularity.processing.p5particles.Particle;
 import com.datasingularity.processing.p5particles.ParticleSystem;
+import com.datasingularity.processing.p5particles.Force;
 
 import processing.core.PApplet;
 import processing.core.PVector;
@@ -69,9 +70,18 @@ public class MagneticForcesExample extends PApplet {
 	@Override
 	public void draw() {
 		
-		background(0);
+		background(255);
 
 		strokeWeight(1f);
+		
+		stroke(0,0,255,70);
+		for (Force f : pSystem.getForces()) {
+			if (f instanceof MagneticForce) {
+				line(f.getA().getLoc().x, f.getA().getLoc().y, f.getB().getLoc().x, f.getB().getLoc().y); 
+			}
+			
+		}
+		
 		fill(255, 255, 255, 150);
 		for (Particle p : pSystem.getParticles()) {
 			if (!p.equals(centerParticle)) {

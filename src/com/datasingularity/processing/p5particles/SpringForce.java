@@ -3,44 +3,21 @@ package com.datasingularity.processing.p5particles;
 import processing.core.PVector;
 
 /**
- * Should simulate a Spring force. Currently doesn't work.
- * Need to re-examine.
- *
+ * Should simulate a spring.
  *
  * @author Benjamin Eckel
  */
-public class SpringForce implements Force {
+public class SpringForce extends Force {
 
-    private Particle a;
-    private Particle b;
     private float restLength;
     private float springConstant;
     private float damping;
 
-    protected SpringForce() {
-    }
+    protected SpringForce() {}
 
     protected SpringForce(Particle a, Particle b) {
-        this.a = a;
-        this.b = b;
-    }
-
-    public Particle getA() {
-        return a;
-    }
-
-    public SpringForce setA(Particle a) {
-        this.a = a;
-        return this;
-    }
-
-    public Particle getB() {
-        return b;
-    }
-
-    public SpringForce setB(Particle b) {
-        this.b = b;
-        return this;
+        super();
+        setParticles(a, b);
     }
 
     public float getRestLength() {
@@ -92,14 +69,4 @@ public class SpringForce implements Force {
         }
     }
 
-    @Override
-    public void setParticles(Particle a, Particle b) {
-    	this.a = a;
-    	this.b = b;
-    }
-
-    @Override
-    public boolean involves(Particle p) {
-        return true;
-    }
 }

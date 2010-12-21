@@ -127,7 +127,6 @@ public class ParticleSystem {
         return forces;
     }
 
-
     public MagneticForce createMagneticForce(Particle a, Particle b) {
     	MagneticForce force = new MagneticForce(a, b);
     	addForce(force);
@@ -141,8 +140,7 @@ public class ParticleSystem {
     }
     
     public ConstantGravitationalForce createConstantGravitationalForce(Particle a, Particle b, float strength) {
-    	ConstantGravitationalForce force = new ConstantGravitationalForce(a, b);
-    	force.setStrength(strength);
+    	ConstantGravitationalForce force = new ConstantGravitationalForce(a, b, strength);
     	addForce(force);
     	return force;
     }
