@@ -2,6 +2,11 @@ package com.datasingularity.processing.p5particles;
 
 import processing.core.PVector;
 
+/**
+ * 
+ * @author bhelx
+ *
+ */
 public class AttractiveForce extends Force {
 
     private float g;

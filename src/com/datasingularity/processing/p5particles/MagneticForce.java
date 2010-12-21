@@ -9,7 +9,7 @@ import processing.core.PVector;
  * http://www.flight404.com/p5/magnets3_3D/magnets_3_3D.pde
  *
  *
- * @author Benjamin Eckel
+ * @author bhelx
  */
 public class MagneticForce extends Force {
 

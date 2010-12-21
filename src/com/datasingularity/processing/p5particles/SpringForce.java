@@ -5,7 +5,7 @@ import processing.core.PVector;
 /**
  * Should simulate a spring.
  *
- * @author Benjamin Eckel
+ * @author bhelx
  */
 public class SpringForce extends Force {
 

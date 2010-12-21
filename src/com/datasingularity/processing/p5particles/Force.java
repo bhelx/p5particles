@@ -4,7 +4,7 @@ package com.datasingularity.processing.p5particles;
  *  
  * Represents a generic Force
  *
- * @author Benjamin Eckel
+ * @author bhelx
  *
  */
 public abstract class Force {

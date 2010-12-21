@@ -9,7 +9,7 @@ import processing.core.PVector;
  *    + http://en.wikipedia.org/wiki/Euler_method
  *    + http://blog.datasingularity.com/?p=517
  *
- * @author ben
+ * @author bhelx
  */
 public class Euler extends ODESolver {
 

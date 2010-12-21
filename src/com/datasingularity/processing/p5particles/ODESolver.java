@@ -6,7 +6,7 @@ package com.datasingularity.processing.p5particles;
  * integrate(Particle, float) function but you may also need to
  * override the stepBy(float) for some methods.
  *
- * @author Benjamin Eckel
+ * @author bhelx
  *
  */
 public abstract class ODESolver {

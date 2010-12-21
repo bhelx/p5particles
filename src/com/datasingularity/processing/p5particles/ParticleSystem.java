@@ -9,7 +9,7 @@ import processing.core.PVector;
  * contain a variety of Forces, Particles, and Integrators.
  *
  *
- * @author Benjamin Eckel
+ * @author bhelx
  */
 public class ParticleSystem {
 

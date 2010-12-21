@@ -4,7 +4,7 @@ import processing.core.PVector;
 
 /**
  *
- * @author Benjamin Eckel
+ * @author bhelx
  */
 public class ConstantGravitationalForce extends Force {
 

@@ -3,7 +3,7 @@ package com.datasingularity.processing.p5particles;
 /**
  * Enumeration that contains all the ODESolvers.
  *
- * @author Benjamin Eckel
+ * @author bhelx
  */
 public enum ODESolvers {
 

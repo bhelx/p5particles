@@ -11,7 +11,7 @@ import processing.core.PVector;
  *
  *  http://www.particle.kth.se/~lindsey/JavaCourse/Book/Part1/Physics/Chapter04/RungeKutta4th.html
  *
- * @author Benjamin Eckel
+ * @author bhelx
  */
 public class RungeKuttaFourthOrder extends ODESolver {
 
