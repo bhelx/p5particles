@@ -96,7 +96,7 @@ public class Particle {
 	 * 
 	 * @return
 	 */
-	public boolean isAlive() {
+	public final boolean isAlive() {
 		return alive;
 	}
 
@@ -230,7 +230,7 @@ public class Particle {
 	 * 
 	 * @return
 	 */
-	public boolean isCharged() {
+	public final boolean isCharged() {
 		return charge != 0f;
 	}
 
