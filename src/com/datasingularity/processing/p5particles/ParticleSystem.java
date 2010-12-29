@@ -1,13 +1,11 @@
 package com.datasingularity.processing.p5particles;
 
 import java.util.ArrayList;
-import java.util.List;
 import processing.core.PVector;
 
 /**
  * This class represents a particles system which may contain a variety of
- * Forces, Particles, and Integrators.
- * 
+ * Forces, Particles, and Integrators. 
  * 
  * @author bhelx
  */
@@ -44,25 +42,6 @@ public class ParticleSystem {
 		this();
 		this.gravity = gravity;
 		this.globalFriction = globalFriction;
-	}
-
-	/**
-	 * Set the integrator
-	 * 
-	 * @param odesolver
-	 */
-	public ParticleSystem setODESolver(ODESolver odesolver) {
-		this.integrator = odesolver;
-		return this;
-	}
-
-	/**
-	 * Get the ODEsolver
-	 * 
-	 * @return
-	 */
-	public ODESolver getODESolver() {
-		return integrator;
 	}
 
 	/**
@@ -132,15 +111,13 @@ public class ParticleSystem {
 		return force;
 	}
 
-	public AttractiveForce createAttractiveForce(Particle a, Particle b,
-			float g, float minDistance) {
+	public AttractiveForce createAttractiveForce(Particle a, Particle b, float g, float minDistance) {
 		AttractiveForce force = new AttractiveForce(a, b, g, minDistance);
 		addForce(force);
 		return force;
 	}
 
-	public ConstantGravitationalForce createConstantGravitationalForce(
-			Particle a, Particle b, float strength) {
+	public ConstantGravitationalForce createConstantGravitationalForce(Particle a, Particle b, float strength) {
 		ConstantGravitationalForce force = new ConstantGravitationalForce(a, b,
 				strength);
 		addForce(force);
@@ -161,14 +138,6 @@ public class ParticleSystem {
 		forces.remove(f);
 	}
 
-	public Force getForce(int i) {
-		return forces.get(i);
-	}
-
-	public int numForces() {
-		return particles.size();
-	}
-
 	/**
 	 * This internally calls ensureCapacity(int) on the ArrayList<Force>. If you
 	 * have an application that is adding and/or removing forces often and you
@@ -186,72 +155,19 @@ public class ParticleSystem {
 	 * 
 	 * @return particles
 	 */
-	public ArrayList<Particle> getParticles() {
+	public final ArrayList<Particle> getParticles() {
 		return particles;
 	}
-
-	/**
-	 * Get the particle at postion i.
-	 * 
-	 * @param i
-	 * @return the particle at position i
-	 */
-	public Particle getParticle(int i) {
-		return particles.get(i);
-	}
-
+	
 	/**
 	 * Get the number of particles in the system.
 	 * 
 	 * @return
 	 */
-	public int numParticles() {
+	public final int numParticles() {
 		return particles.size();
 	}
 
-	/**
-	 * Creates a generic particle
-	 * 
-	 * @return the Particle you just created
-	 */
-	public Particle addParticle() {
-		Particle p = new Particle();
-		particles.add(p);
-		return p;
-	}
-
-	/**
-	 * Creates a generic particle @ location x, y
-	 * 
-	 * @return the Particle you just created
-	 */
-	public Particle addParticle(float x, float y) {
-		Particle p = new Particle(new PVector(x, y));
-		particles.add(p);
-		return p;
-	}
-
-	/**
-	 * Creates a generic particle @ location x, y, z
-	 * 
-	 * @return the Particle you just created
-	 */
-	public Particle addParticle(float x, float y, float z) {
-		Particle p = new Particle(new PVector(x, y, z));
-		particles.add(p);
-		return p;
-	}
-
-	/**
-	 * Creates a generic particle @ location loc
-	 * 
-	 * @return the Particle you just created
-	 */
-	public Particle addParticle(PVector loc) {
-		Particle p = new Particle(loc);
-		particles.add(p);
-		return p;
-	}
 
 	/**
 	 * Put an existing Particle in the system. p could be any subclass of
@@ -259,7 +175,7 @@ public class ParticleSystem {
 	 * 
 	 * @return the Particle you just put in
 	 */
-	public Particle addParticle(Particle p) {
+	public final Particle addParticle(Particle p) {
 		particles.add(p);
 		return p;
 	}
@@ -269,7 +185,7 @@ public class ParticleSystem {
 	 * 
 	 * @param p
 	 */
-	public void removeParticle(Particle p) {
+	public final void removeParticle(Particle p) {
 		particles.remove(p);
 	}
 
@@ -282,7 +198,7 @@ public class ParticleSystem {
 	 * @param c
 	 * @param maxParticles
 	 */
-	public ParticleSystem setMaxParticles(int maxParticles) {
+	public final ParticleSystem setMaxParticles(int maxParticles) {
 		particles.ensureCapacity(maxParticles);
 		return this;
 	}
@@ -340,7 +256,7 @@ public class ParticleSystem {
 	 * internally.
 	 * 
 	 */
-	public void applyForces() {
+	public final void applyForces() {
 		for (Force f : forces) {
 			f.apply();
 		}
@@ -362,30 +278,12 @@ public class ParticleSystem {
 		}
 	}
 
-	// /**
-	// * Could be used for explicit integration.
-	// * @param particle
-	// */
-	// public void applyForcesThatInvolve(Particle particle) {
-	// if (particle.fixed) {
-	// return;
-	// }
-	// for (Force f : getForcesThatInvolve(particle)) {
-	// f.apply();
-	// }
-	// if (globalFriction != 0f) {
-	// PVector dissipativeForce = PVector.mult(particle.getVel(),
-	// -globalFriction);
-	// particle.applyForce(dissipativeForce);
-	// }
-	// }
-
 	/**
 	 * Clear all the forces in the system. This should probably only be used
 	 * internally.
 	 * 
 	 */
-	public void clearForces() {
+	public final void clearForces() {
 		for (Particle p : getParticles()) {
 			p.clearForce();
 		}
@@ -407,5 +305,51 @@ public class ParticleSystem {
 	// }
 	// }
 	// return forcesInvolved;
+	// }
+
+	// no use for thse
+
+	// /**
+	// * Creates a generic particle
+	// *
+	// * @return the Particle you just created
+	// */
+	// public Particle addParticle() {
+	// Particle p = new Particle();
+	// particles.add(p);
+	// return p;
+	// }
+	//
+	// /**
+	// * Creates a generic particle @ location x, y
+	// *
+	// * @return the Particle you just created
+	// */
+	// public Particle addParticle(float x, float y) {
+	// Particle p = new Particle(new PVector(x, y));
+	// particles.add(p);
+	// return p;
+	// }
+	//
+	// /**
+	// * Creates a generic particle @ location x, y, z
+	// *
+	// * @return the Particle you just created
+	// */
+	// public Particle addParticle(float x, float y, float z) {
+	// Particle p = new Particle(new PVector(x, y, z));
+	// particles.add(p);
+	// return p;
+	// }
+	//
+	// /**
+	// * Creates a generic particle @ location loc
+	// *
+	// * @return the Particle you just created
+	// */
+	// public Particle addParticle(PVector loc) {
+	// Particle p = new Particle(loc);
+	// particles.add(p);
+	// return p;
 	// }
 }

@@ -27,7 +27,7 @@ public class ConstantGravitationalForce extends Force {
 				forceVector.normalize();
 				forceVector.mult(g);
 				// this is constant, doesnt care about mass
-				b.getAcc().add(forceVector);
+				b.acc.add(forceVector);
 			}
 		}
 	}
