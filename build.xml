@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="p5particles" default="package" basedir="."> 
-	<property name="dist" value="dist"/>
+	<property name="dist" value="library"/>
 	<property name="bin" value="bin"/>
 	<property name="src" value="src"/>
-	<property name="dist" value="dist"/>
 	<property name="processing-core-lib" value="core-0191.jar"/>
 	
   
