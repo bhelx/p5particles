@@ -6,9 +6,15 @@ float MASS_SCALE = 3f;
 ParticleSystem pSystem; 
 FixedBody centerBody;
 
+PFont hudFont;
+
 void setup() {
   size(800, 600);
   smooth();
+  
+//  hudFont = loadFont("Ziggurat-HTF-Black-32.vlw");
+  hudFont = createFont("FFScala", 16);
+  textFont(hudFont, 16);
   
   pSystem = new ParticleSystem(0.005f);
   
@@ -20,7 +26,7 @@ void setup() {
 
 void draw() {
   background(#CCEEFF);
-  
+    
   /*
    * The parameter 2f increases the time step by 2 seconds each frame. 
    * This effectively makes the simulation 2 times faster but the larger
@@ -30,7 +36,13 @@ void draw() {
   pSystem.tickAndRender(2f);
   centerBody.controlledRender();
   
+  fill(#B2936B);
+  text("Particle count: " + pSystem.getParticles().size(), 15, 30);
+
+  
 }
+
+
 
 void mouseDragged() {
     PVector mouseVelocity = new PVector(mouseX-pmouseX, mouseY-pmouseY);
