@@ -1,0 +1,7 @@
+color PALETTE[] = {
+  0xFF224433,
+  0xFF008844,
+  0xFFCCEEFF,
+  0xFFB2936B,
+  0xFFFFE8CC
+};
