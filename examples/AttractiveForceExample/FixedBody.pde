@@ -7,14 +7,16 @@ class FixedBody extends Particle {
   }
   
   /**
-   * overrides <Particle>.render()
+   * DOES NOT overrides <Particle>.render()
+   * so you can control when to render
+   * just an example of one way to do things
    */
   public void controlledRender() {
     float diam = this.getMass() * MASS_SCALE;
     
-    stroke(#B2936B);
+    stroke(PALETTE[1]);
     strokeWeight(6f);    
-    fill(#FFE8CC);    
+    fill(PALETTE[2]);    
     ellipse(this.getLoc().x, this.getLoc().y, diam, diam);
     noStroke();
   }

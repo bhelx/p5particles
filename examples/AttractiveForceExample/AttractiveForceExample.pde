@@ -12,8 +12,7 @@ void setup() {
   size(800, 600);
   smooth();
   
-//  hudFont = loadFont("Ziggurat-HTF-Black-32.vlw");
-  hudFont = createFont("FFScala", 16);
+  hudFont = createFont("Helvetica", 16);
   textFont(hudFont, 16);
   
   pSystem = new ParticleSystem(0.005f);
@@ -25,7 +24,7 @@ void setup() {
 }
 
 void draw() {
-  background(#CCEEFF);
+  background(PALETTE[0]);
     
   /*
    * The parameter 2f increases the time step by 2 seconds each frame. 
@@ -34,12 +33,13 @@ void draw() {
    * to 1f.  
    */
   pSystem.tickAndRender(2f);
+  
+  //rendering on our own terms
   centerBody.controlledRender();
   
-  fill(#B2936B);
-  text("Particle count: " + pSystem.getParticles().size(), 15, 30);
-
-  
+  fill(PALETTE[4]);
+  text("Particles: " + pSystem.getParticles().size(), 5, 14);
+  text("Forces: " + pSystem.getForces().size(), 5, 28);
 }
 
 
