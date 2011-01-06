@@ -1,5 +1,7 @@
 import com.datasingularity.processing.p5particles.*;
 
+boolean drawForces = false;
+
 float MASS_SCALE = 15f;
 float R = 100f;
 float PI_DIV = 8f;
@@ -46,7 +48,9 @@ void setup() {
 
 void draw() {
   background(PALETTE[0]);
-
+  
+  drawForces();
+  
   /*
    * The argument 2f increases the time step by 2 seconds each frame. 
    * This effectively makes the simulation 2 times faster but the larger
@@ -61,6 +65,24 @@ void draw() {
 void mouseDragged() {
   centerBody.getLoc().x = mouseX;
   centerBody.getLoc().y = mouseY;  
+}
+
+void keyPressed() {
+  if (key == ' ') drawForces = !drawForces;
+}
+
+void drawForces() {
+  if (drawForces) {
+    ArrayList forces = pSystem.getForces();
+    stroke(PALETTE[2], 50);
+    for (int i = 0; i < forces.size(); i++) {
+      Force f = (Force) forces.get(i);
+      if (f instanceof MagneticForce) { //only draw magnetic forces, this is how you can choose
+        line(f.getA().getLoc().x, f.getA().getLoc().y, f.getB().getLoc().x, f.getB().getLoc().y);
+      }
+    }
+    noStroke();
+  }
 }
 
 

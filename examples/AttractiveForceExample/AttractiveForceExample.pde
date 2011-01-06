@@ -1,12 +1,12 @@
 import com.datasingularity.processing.p5particles.*;
 
+boolean drawForces = false;
+
 int NUM_BODIES = 10;
 float MASS_SCALE = 3f;
 	
 ParticleSystem pSystem; 
 FixedBody centerBody;
-
-
 
 void setup() {
   size(800, 600);
@@ -23,6 +23,8 @@ void setup() {
 
 void draw() {
   background(PALETTE[0]);
+  
+  drawForces();  
     
   /*
    * The argument 2f increases the time step by 2 seconds each frame. 
@@ -38,8 +40,6 @@ void draw() {
   drawHUD();
 }
 
-
-
 void mouseDragged() {
     PVector mouseVelocity = new PVector(mouseX-pmouseX, mouseY-pmouseY);
     mouseVelocity.mult(0.1f); //scale it down
@@ -50,6 +50,24 @@ void mouseDragged() {
     pSystem.addParticle(randomBody);
     
     AttractiveForce aForce = pSystem.createAttractiveForce(centerBody, randomBody, 12f, 30f);
+}
+
+
+void keyPressed() {
+  if (key == ' ') drawForces = !drawForces;
+}
+
+void drawForces() {
+  if (drawForces) {
+    ArrayList forces = pSystem.getForces();
+    stroke(PALETTE[2], 50);
+    strokeWeight(1f);
+    for (int i = 0; i < forces.size(); i++) {
+      Force f = (Force) forces.get(i);
+      line(f.getA().getLoc().x, f.getA().getLoc().y, f.getB().getLoc().x, f.getB().getLoc().y);
+    }
+    noStroke();
+  }
 }
 
 
