@@ -1,9 +1,7 @@
 import com.datasingularity.processing.p5particles.*;
 
-boolean drawForces = false;
-
-int NUM_BODIES = 10;
-float MASS_SCALE = 3f;
+boolean drawForces = true;
+boolean moveBox = false;
 	
 ParticleSystem pSystem; 
 Spring spring;
@@ -13,8 +11,9 @@ void setup() {
   smooth();
   initHUD();  
   rectMode(CENTER);
+  noStroke();
 
-  pSystem = new ParticleSystem(0.005f);
+  pSystem = new ParticleSystem();
 
   spring = new Spring(pSystem, new PVector(width/2, height), new PVector(width/2, height/2));
  
@@ -24,12 +23,13 @@ void draw() {
   background(PALETTE[0]);
   
   drawForces();  
+  
+  if (moveBox) spring.freeBox.setLoc(new PVector(mouseX, mouseY));  
     
   pSystem.tickAndRender();
   
   drawHUD();
 }
-
 
 void keyPressed() {
   if (key == ' ') drawForces = !drawForces;
@@ -48,5 +48,15 @@ void drawForces() {
   }
 }
 
+
+void mousePressed() {
+  moveBox = true;
+  spring.freeBox.setFixed(true);
+}
+
+void mouseReleased() {
+  moveBox = false; 
+  spring.freeBox.setFixed(false);
+}
 
 

@@ -1,8 +1,8 @@
 public class Spring {
   
   private ParticleSystem myParticleSystem;
-  private Box fixedBox;
-  private Box freeBox;
+  public Box fixedBox;
+  public Box freeBox;
   
   public Spring(ParticleSystem _pSystem, PVector fixedBoxCoords, PVector freeBoxCoords) {
     myParticleSystem = _pSystem;
@@ -13,9 +13,11 @@ public class Spring {
     
     freeBox = new Box(freeBoxCoords, 30f);
     myParticleSystem.addParticle(freeBox);    
+   
+    float restLength = dist(fixedBoxCoords.x, fixedBoxCoords.y, freeBoxCoords.x, freeBoxCoords.y);
     
-    myParticleSystem.createSpringForce(fixedBox, freeBox, 1f, dist(fixedBoxCoords.x, fixedBoxCoords.y, freeBoxCoords.x, freeBoxCoords.y), 0.9f);
-    
+    myParticleSystem.createSpringForce(fixedBox, freeBox, 0.8f, restLength, 2f);
+   
   }
   
 }
