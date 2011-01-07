@@ -124,8 +124,8 @@ public class ParticleSystem {
 		return force;
 	}
 
-	public SpringForce createSpringForce(Particle a, Particle b) {
-		SpringForce force = new SpringForce(a, b);
+	public SpringForce createSpringForce(Particle a, Particle b, float springConstant, float restLength, float damping) {
+		SpringForce force = new SpringForce(a, b, springConstant, restLength, damping);
 		addForce(force);
 		return force;
 	}

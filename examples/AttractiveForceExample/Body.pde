@@ -12,7 +12,6 @@ class Body extends Particle {
       this.setMass(random(MIN_MASS, MAX_MASS));
   }
   
-    
   /**
    * overrides <Particle>.render()
    */

@@ -3,7 +3,6 @@ package com.datasingularity.processing.p5particles;
 import processing.core.PVector;
 
 /**
-i
  * 
  * @author bhelx
  */
@@ -17,6 +16,8 @@ public class Particle {
 	protected PVector acc;
 	protected float mass;
 	protected boolean fixed;
+//	protected boolean axisConstraintX;
+//	protected boolean axisConstraintY;
 	protected boolean alive = true;
 	protected float charge;
 
@@ -45,6 +46,8 @@ public class Particle {
 	 * @param acc
 	 */
 	public Particle(PVector loc, PVector vel, PVector acc) {
+//		this.axisConstraintX = false;
+//		this.axisConstraintY = false;
 		this.loc = loc;
 		this.vel = vel;
 		this.acc = acc;
@@ -81,8 +84,11 @@ public class Particle {
 	}
 
 	/**
-	 * Apply a force to a particle. Internally it divdes the force vector by the
+	 * Apply a force to a particle. Internally it divides the force vector by the
 	 * particle's mass and adds to the acceleration.
+	 * 
+	 * TODO Kind of dangerous to assume that this is the only place we need to take 
+	 * into consideration the axis constraints.
 	 * 
 	 * @param force
 	 */
@@ -92,7 +98,7 @@ public class Particle {
 	}
 
 	/**
-	 * Is the particle alive? hass the kill() method been called?
+	 * Is the particle alive? has the kill() method been called?
 	 * 
 	 * @return
 	 */
@@ -244,7 +250,7 @@ public class Particle {
 	}
 
 	/**
-	 * Set the fixed propery
+	 * Set the fixed property
 	 * 
 	 * @param fixed
 	 *            true for fixed and false for free
@@ -254,6 +260,26 @@ public class Particle {
 		this.fixed = fixed;
 		return this;
 	}
+	
+//	public boolean isAxisConstraintX() {
+//		return axisConstraintX;
+//	}
+//
+//	public void setAxisConstraintX(boolean axisContraintX) {
+//		this.axisConstraintX = axisContraintX;
+//	}
+//
+//	public boolean isAxisConstraintY() {
+//		return axisConstraintY;
+//	}
+//
+//	public void setAxisConstraintY(boolean axisContraintY) {
+//		this.axisConstraintY = axisContraintY;
+//	}
+//	
+//	public boolean isConstrained() {
+//		return this.axisConstraintX || this.axisConstraintY;
+//	}
 
 	/**
 	 * Doesn't do anything by default. You must override and implement this

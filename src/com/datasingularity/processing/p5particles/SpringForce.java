@@ -16,8 +16,11 @@ public class SpringForce extends Force {
 	protected SpringForce() {
 	}
 
-	protected SpringForce(Particle a, Particle b) {
+	protected SpringForce(Particle a, Particle b, float springConstant, float restLength, float damping) {
 		super();
+		setDamping(damping);
+		setRestLength(restLength);
+		setSpringConstant(springConstant);
 		setParticles(a, b);
 	}
 
