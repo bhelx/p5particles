@@ -4,7 +4,11 @@ boolean drawForces = true;
 boolean moveBox = false;
 	
 ParticleSystem pSystem; 
-Spring spring;
+ArrayList springs;
+Spring chosenSpring;
+
+int NUM_SPRINGS = 30;
+float boxSize;
 
 void setup() {
   size(800, 600);
@@ -15,7 +19,14 @@ void setup() {
 
   pSystem = new ParticleSystem();
 
-  spring = new Spring(pSystem, new PVector(width/2, height), new PVector(width/2, height/2));
+  springs = new ArrayList();
+  
+  boxSize = width/(float)NUM_SPRINGS;
+  float halfBoxSize = boxSize/2f;
+  
+  for (float x = halfBoxSize; x < NUM_SPRINGS*boxSize; x += boxSize) {
+      springs.add(new Spring(pSystem, new PVector(x, height-halfBoxSize), new PVector(x, height/2), boxSize));
+  }
  
 }
 
@@ -24,11 +35,27 @@ void draw() {
   
   drawForces();  
   
-  if (moveBox) spring.freeBox.setLoc(new PVector(mouseX, mouseY));  
+  if (moveBox) {
+      setSpringByMouse();
+      if (chosenSpring != null) chosenSpring.freeBox.setLoc(new PVector(mouseX, mouseY));  
+  }
     
   pSystem.tickAndRender();
   
   drawHUD();
+}
+
+void setSpringByMouse() {
+  for (int i = 0; i < springs.size(); i++) {
+    Spring spring = (Spring) springs.get(i);
+    float upper = spring.freeBox.getLoc().x + (boxSize/2);
+    float lower = spring.freeBox.getLoc().x - (boxSize/2);
+    if (mouseX > lower && mouseX < upper) {
+       chosenSpring = spring; 
+       return;
+    }  
+  }
+  chosenSpring = null;
 }
 
 void keyPressed() {
@@ -51,12 +78,10 @@ void drawForces() {
 
 void mousePressed() {
   moveBox = true;
-  spring.freeBox.setFixed(true);
 }
 
 void mouseReleased() {
   moveBox = false; 
-  spring.freeBox.setFixed(false);
 }
 
 

@@ -1,5 +1,6 @@
 /**
  * Not very re-usable :)
+ * Hopefully a good jumping off point.
  */
 class Box extends Particle {
    
