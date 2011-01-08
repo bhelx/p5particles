@@ -7,9 +7,9 @@ class FixedBody extends Particle {
   }
   
   /**
-   * DOES NOT overrides <Particle>.render()
-   * so you can control when to render
-   * just an example of one way to do things
+   * DOES NOT override <Particle>.render()
+   * so you can control when to render.
+   * just an example of one way to do things.
    */
   public void controlledRender() {
     float diam = this.getMass() * MASS_SCALE;

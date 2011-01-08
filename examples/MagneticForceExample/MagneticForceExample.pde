@@ -1,12 +1,13 @@
 /**
  * <h2>Instructions</h2>
- * <p>Click on the center particle and drag to move it.
+ * <p>
+ * Click on the center particle and drag to move it.
  * Hit the space bar to toggle drawing of forces.
  * All of the particles in the scene are magnetically charged.
  * The smaller orbiting particles have a constant gravitational
- * attraction to the center particle. </p>
+ * attraction to the center particle. 
  * 
- * <br />
+ * <p>
  * @author bhelx 01-07-2011
  */
 import com.datasingularity.processing.p5particles.*;
@@ -62,12 +63,10 @@ void draw() {
   
   drawForces();
   
-  /*
-   * The argument 2f increases the time step by 2 seconds each frame. 
-   * This effectively makes the simulation 2 times faster but the larger
-   * this number is set the less accurate the simluation becomes. it defaults
-   * to 1f.  
-   */
+  // The argument 2f increases the time step by 2 seconds each frame. 
+  // This effectively makes the simulation 2 times faster but the larger
+  // this number is set the less accurate the simluation becomes. it defaults
+  // to 1f.  
   pSystem.tickAndRender(2f);
 
   drawHUD();

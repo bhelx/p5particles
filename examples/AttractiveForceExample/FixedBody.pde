@@ -7,7 +7,7 @@ class FixedBody extends Particle {
   }
   
   /**
-   * DOES NOT overrides <Particle>.render()
+   * DOES NOT override <Particle>.render()
    * so you can control when to render
    * just an example of one way to do things
    */

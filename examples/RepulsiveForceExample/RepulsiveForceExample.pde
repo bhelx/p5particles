@@ -1,13 +1,18 @@
 /**
  * <h2>Instructions</h2>
- * <p>Click the screen above and drag to shoot particles from your
+ *
+ * <p>
+ * Click the screen above and drag to shoot particles from your
  * cursor tip. They will be pushed away from the center. Hit the 
- * space bar to toggle drawing of the forces.</p>
- * <p>Repulsion is the same force as attraction, 
- * just a different direction.</p>
+ * space bar to toggle drawing of the forces.
+ *
+ * <p>
+ * Repulsion is the same force as attraction, 
+ * just a different direction.
  * 
- * <br />
- * @author bhelx 01-07-2011
+ * <p>
+ * author bhelx 01-07-2011
+ *
  */
 import com.datasingularity.processing.p5particles.*;
 
@@ -36,12 +41,11 @@ void draw() {
 
   drawForces();  
 
-  /*
-   * The argument 2f increases the time step by 2 seconds each frame. 
-   * This effectively makes the simulation 2 times faster but the larger
-   * this number is set the less accurate the simluation becomes. it defaults
-   * to 1f.  
-   */
+  
+  // The argument 2f increases the time step by 2 seconds each frame. 
+  // This effectively makes the simulation 2 times faster but the larger
+  // this number is set the less accurate the simluation becomes. it defaults
+  // to 1f.  
   pSystem.tick(2f); //just tick(), no render() yet
 
   //bounce them off the walls
