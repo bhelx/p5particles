@@ -11,6 +11,7 @@ public abstract class Force {
 
 	protected Particle a;
 	protected Particle b;
+	protected boolean active = true;
 
 	public final boolean involves(Particle p) {
 		return p.equals(a) || p.equals(b);
@@ -45,6 +46,10 @@ public abstract class Force {
 		}
 	}
 
+	public final void setActive(boolean active) {
+		this.active = active;
+	}
+	
 	public abstract void apply();
 
 }

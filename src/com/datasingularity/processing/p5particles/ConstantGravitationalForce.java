@@ -21,7 +21,7 @@ public class ConstantGravitationalForce extends Force {
 
 	@Override
 	public void apply() {
-		if (!b.fixed) {
+		if (active && !b.fixed) {
 			PVector forceVector = PVector.sub(a.loc, b.loc);
 			if (forceVector.mag() > 0.1) {
 				forceVector.normalize();

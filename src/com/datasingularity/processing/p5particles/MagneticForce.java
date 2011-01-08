@@ -23,7 +23,7 @@ public class MagneticForce extends Force {
 
 	@Override
 	public void apply() {
-		if (!a.fixed || !b.fixed) {
+		if (active && (!a.fixed || !b.fixed)) {
 
 			PVector direction = PVector.sub(a.loc, b.loc);
 			float distance = direction.mag();

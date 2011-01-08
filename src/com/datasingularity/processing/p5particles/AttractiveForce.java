@@ -25,19 +25,21 @@ public class AttractiveForce extends Force {
 
 	@Override
 	public void apply() {
-		PVector forceVector = PVector.sub(a.loc, b.loc);
-		float d = forceVector.mag();
-		if (d < minDistance) {
-			d = minDistance;
-		}
-		forceVector.normalize();
-		float force = (g * a.mass * b.mass) / (d * d);
-		forceVector.mult(force);
-		if (!b.isFixed()) {
-			b.applyForce(forceVector);
-		}
-		if (!a.isFixed()) {
-			a.applyForce(PVector.mult(forceVector, -1f));
+		if (active) {
+			PVector forceVector = PVector.sub(a.loc, b.loc);
+			float d = forceVector.mag();
+			if (d < minDistance) {
+				d = minDistance;
+			}
+			forceVector.normalize();
+			float force = (g * a.mass * b.mass) / (d * d);
+			forceVector.mult(force);
+			if (!b.isFixed()) {
+				b.applyForce(forceVector);
+			}
+			if (!a.isFixed()) {
+				a.applyForce(PVector.mult(forceVector, -1f));
+			}
 		}
 
 	}
