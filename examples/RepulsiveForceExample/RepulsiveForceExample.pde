@@ -53,28 +53,7 @@ void draw() {
   for (int i = 0; i < particles.size(); i++) {
     Particle p = (Particle) particles.get(i);
     if (p instanceof Body) { //only need to check these
-      float leftWall = 0f + p.getMass()/2f;
-      float rightWall = width - p.getMass()/2f;
-      float topWall = leftWall;
-      float bottomWall = height - p.getMass()/2f;
-    
-      if(p.getLoc().x < leftWall) { 
-        p.getVel().x = -p.getVel().x;
-        p.getLoc().x = leftWall;
-      } 
-      else if(p.getLoc().x > rightWall) {
-        p.getVel().x = -p.getVel().x;
-        p.getLoc().x = rightWall;
-      }
-      
-      if(p.getLoc().y < topWall) { 
-        p.getVel().y = -p.getVel().y;
-        p.getLoc().y = topWall;
-      } 
-      else if(p.getLoc().y > bottomWall) {
-        p.getVel().y = -p.getVel().y;
-        p.getLoc().y = bottomWall;
-      }
+      trapParticle(p);
     }
   }
 
@@ -83,10 +62,6 @@ void draw() {
 
   //rendering on our own terms
   centerBody.controlledRender();
-
-
-
-
 
   drawHUD();
 }
@@ -121,5 +96,30 @@ void drawForces() {
     noStroke();
   }
 }
+
+void trapParticle(Particle p) {
+        float leftWall = 0f + p.getMass()/2f;
+      float rightWall = width - p.getMass()/2f;
+      float topWall = leftWall;
+      float bottomWall = height - p.getMass()/2f;
+    
+      if(p.getLoc().x < leftWall) { 
+        p.getVel().x = -p.getVel().x;
+        p.getLoc().x = leftWall;
+      } 
+      else if(p.getLoc().x > rightWall) {
+        p.getVel().x = -p.getVel().x;
+        p.getLoc().x = rightWall;
+      }
+      
+      if(p.getLoc().y < topWall) { 
+        p.getVel().y = -p.getVel().y;
+        p.getLoc().y = topWall;
+      } 
+      else if(p.getLoc().y > bottomWall) {
+        p.getVel().y = -p.getVel().y;
+        p.getLoc().y = bottomWall;
+      } 
+} 
 
 
