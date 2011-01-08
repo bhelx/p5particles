@@ -1,3 +1,14 @@
+/**
+ * <h2>Instructions</h2>
+ * <p>Click on the center particle and drag to move it.
+ * Hit the space bar to toggle drawing of forces.
+ * All of the particles in the scene are magnetically charged.
+ * The smaller orbiting particles have a constant gravitational
+ * attraction to the center particle. </p>
+ * 
+ * <br />
+ * @author bhelx 01-07-2011
+ */
 import com.datasingularity.processing.p5particles.*;
 
 boolean drawForces = false;

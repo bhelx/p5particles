@@ -1,3 +1,12 @@
+/**
+ * <h2>Instructions</h2>
+ * <p>Click the screen above and drag to shoot particles from your
+ * cursor tip. They will be attracted to the center. Hit the 
+ * space bar to toggle drawing of the forces.</p>
+ * 
+ * <br />
+ * @author bhelx 01-07-2011
+ */
 import com.datasingularity.processing.p5particles.*;
 
 boolean drawForces = false;
