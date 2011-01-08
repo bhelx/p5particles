@@ -16,6 +16,7 @@ public class ParticleSystem {
 	private ArrayList<Force> forces;
 	private ArrayList<Particle> particles;
 	private ODESolver integrator;
+	private boolean managingLifecycle = false;
 
 	/**
 	 * Default constructor
@@ -68,7 +69,7 @@ public class ParticleSystem {
 	 * Set the global gravity vector for this system
 	 * 
 	 * @param gravity
-	 *            a float whcih corresponds to the y axis
+	 *            a float which corresponds to the y axis
 	 * @return
 	 */
 	public ParticleSystem setGravity(float gravity) {
@@ -94,6 +95,14 @@ public class ParticleSystem {
 	public ParticleSystem setGlobalFriction(float globalFriction) {
 		this.globalFriction = globalFriction;
 		return this;
+	}
+	
+	public boolean isManagingLifecyle() {
+		return managingLifecycle;
+	}
+
+	public void setManagingLifecycle(boolean managingLifecycle) {
+		this.managingLifecycle = managingLifecycle;
 	}
 
 	/**
@@ -209,7 +218,7 @@ public class ParticleSystem {
 	 * @param dt
 	 */
 	public final void tick(float dt) {
-		removeDead();
+		if (managingLifecycle) removeDead();
 		integrator.stepBy(dt);
 
 	}
@@ -223,21 +232,23 @@ public class ParticleSystem {
 	}
 
 	private final void removeDead() {
+		ArrayList<Particle> dead = new ArrayList<Particle>();
 		for (int i = numParticles() - 1; i >= 0; i--) {
-			if (!particles.get(i).alive) {
-				particles.remove(i);
+			Particle p = particles.get(i);
+			if (!p.isAlive()) {
+				dead.add(p);
+				particles.remove(p); //remove it from master list while we have it
 			}
 		}
+		if (dead.size() > 0) killParticles(dead);
 	}
 
 	public final void renderParticles() {
 		for (int i = 0; i < numParticles(); i++) {
 			Particle p = particles.get(i);
-			if (p.alive) {
+			if (p.isAlive()) {
 				p.render();
-			} else {
-				p.kill();
-			}
+			} 
 		}
 	}
 
@@ -289,6 +300,28 @@ public class ParticleSystem {
 		}
 	}
 
+	/**
+	 * 
+	 * remove these particles and the forces associated with them
+	 * particles should already be pulled from the particles List
+	 * 
+	 * @param dead
+	 */
+	private final void killParticles(ArrayList<Particle> dead) {
+		ArrayList<Force> deadForces = new ArrayList<Force>();
+		for (int i = dead.size()-1; i >= 0; i--) {
+			Particle p = dead.get(i);
+			for (Force f : forces) {
+				if (f.involves(p)) deadForces.add(f);
+			}
+		}
+		for (int i = deadForces.size()-1; i >= 0; i--) {
+			Force f = deadForces.get(i);
+			forces.remove(f);
+		}
+	}
+	
+	
 	// /**
 	// * Get all the forces in which Particle p is a part of.
 	// *

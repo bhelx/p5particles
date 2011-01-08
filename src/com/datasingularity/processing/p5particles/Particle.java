@@ -10,6 +10,12 @@ public class Particle {
 
 	private static final float DEFAULT_MASS = 1f;
 	private static final float DEFAULT_CHARGE = 0f;
+	private static long pid = 0L;
+	
+	//should i have to do this?
+	private static synchronized long genID() {
+		return ++pid;
+	}
 
 	protected PVector loc;
 	protected PVector vel;
@@ -18,8 +24,11 @@ public class Particle {
 	protected boolean fixed;
 //	protected boolean axisConstraintX;
 //	protected boolean axisConstraintY;
-	protected boolean alive = true;
 	protected float charge;
+	protected long age = 0L;
+	protected long lifeSpan;
+	protected long id;
+	
 
 	/**
 	 * Creates an empty particle
@@ -53,6 +62,7 @@ public class Particle {
 		this.acc = acc;
 		this.mass = DEFAULT_MASS;
 		this.charge = DEFAULT_CHARGE;
+		id = Particle.genID();
 	}
 
 	/**
@@ -82,13 +92,18 @@ public class Particle {
 		this.mass = mass;
 		this.fixed = fixed;
 	}
+	
+	@Override
+	public boolean equals(Object other) {
+		if (!(other instanceof Particle)) return false;
+		
+		Particle p = (Particle) other;
+		return p.id == this.id;
+	}
 
 	/**
 	 * Apply a force to a particle. Internally it divides the force vector by the
 	 * particle's mass and adds to the acceleration.
-	 * 
-	 * TODO Kind of dangerous to assume that this is the only place we need to take 
-	 * into consideration the axis constraints.
 	 * 
 	 * @param force
 	 */
@@ -103,7 +118,7 @@ public class Particle {
 	 * @return
 	 */
 	public final boolean isAlive() {
-		return alive;
+		return age <= lifeSpan;
 	}
 
 	/**
@@ -112,7 +127,24 @@ public class Particle {
 	 * 
 	 */
 	public final void kill() {
-		alive = false;
+		age = lifeSpan + 1;
+	}
+	
+	public void setLifeSpan(int lifeSpan) {
+		setLifeSpan((long)lifeSpan);
+	}
+	
+	public Particle setLifeSpan(long lifeSpan) {
+		this.lifeSpan = lifeSpan;
+		return this;
+	}
+	
+	public long getLifeSpan() {
+		return this.lifeSpan;
+	}
+	
+	public final void onUpdate() {
+		age++;
 	}
 
 	/**
@@ -209,6 +241,10 @@ public class Particle {
 	public final Particle setMass(float mass) {
 		this.mass = mass;
 		return this;
+	}
+	
+	public final long getAge() {
+		return age;
 	}
 
 	/**

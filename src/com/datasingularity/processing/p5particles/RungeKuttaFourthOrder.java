@@ -164,6 +164,9 @@ public class RungeKuttaFourthOrder extends ODESolver {
 				kAccSum.mult(h / 6f);
 
 				particle.setVel(PVector.add(originalVelocities[i], kAccSum));
+				
+				//now that we are done call onUpdate()
+				particle.onUpdate();
 			}
 
 		}

@@ -24,5 +24,7 @@ public class Euler extends ODESolver {
 	public void integrate(Particle p, float h) {
 		p.vel.add(PVector.mult(p.acc, h));
 		p.loc.add(PVector.mult(p.vel, h));
+		//now that we are done call the onUpdate()
+		p.onUpdate();
 	}
 }
