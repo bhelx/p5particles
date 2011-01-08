@@ -18,7 +18,6 @@ import com.datasingularity.processing.p5particles.*;
 
 boolean drawForces = false;
 
-int NUM_BODIES = 10;
 float MASS_SCALE = 3f;
 
 ParticleSystem pSystem; 
@@ -75,8 +74,8 @@ void mouseDragged() {
 
   pSystem.addParticle(randomBody);
 
-  //make the force -12f as opposed to 12f
-  AttractiveForce aForce = pSystem.createAttractiveForce(centerBody, randomBody, -12f, 30f);
+  //make the force -24f as opposed to a positive value which would cause attraction
+  AttractiveForce aForce = pSystem.createAttractiveForce(centerBody, randomBody, -24f, 30f);
 }
 
 

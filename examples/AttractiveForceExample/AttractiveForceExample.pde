@@ -12,7 +12,6 @@ import com.datasingularity.processing.p5particles.*;
 
 boolean drawForces = false;
 
-int NUM_BODIES = 10;
 float MASS_SCALE = 3f;
 	
 ParticleSystem pSystem; 
@@ -36,7 +35,6 @@ void draw() {
   
   drawForces();  
     
-  
   // The argument 2f increases the time step by 2 seconds each frame. 
   // This effectively makes the simulation 2 times faster but the larger
   // this number is set the less accurate the simluation becomes. it defaults
