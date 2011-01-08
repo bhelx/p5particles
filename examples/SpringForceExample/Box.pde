@@ -20,6 +20,10 @@ class Box extends Particle {
     
     this.getLoc().x = constraintX; //constrain
     
+    if (this.getLoc().y > height - mass) {
+        this.getLoc().y = height - mass; //keep it from going under fixed box
+    }
+    
     fill(PALETTE[1]);
     rect(this.getLoc().x, this.getLoc().y, mass, mass);    
     fill(PALETTE[2]);    

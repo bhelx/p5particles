@@ -61,7 +61,11 @@ void setSpringByMouse() {
     float upper = spring.freeBox.getLoc().x + (boxSize/2);
     float lower = spring.freeBox.getLoc().x - (boxSize/2);
     if (mouseX > lower && mouseX < upper) {
+       if (chosenSpring != null) {
+         chosenSpring.freeBox.setFixed(false); //free the last one
+       }
        chosenSpring = spring; 
+       chosenSpring.freeBox.setFixed(true); //fix the new one
        return;
     }  
   }
@@ -92,6 +96,7 @@ void mousePressed() {
 
 void mouseReleased() {
   moveBox = false; 
+  if (chosenSpring != null) chosenSpring.freeBox.setFixed(false);  
 }
 
 
