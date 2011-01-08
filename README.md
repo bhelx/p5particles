@@ -2,8 +2,7 @@ Particle Physics System for Processing
 
 <hr />
 
-This is not quite ready. Still working on examples and testing. 
-Should be done by end of the year.
+Still working on examples. API is almost there.
 
 <hr />
 
