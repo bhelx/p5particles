@@ -33,11 +33,11 @@ For more info see <a href="http://www.learningprocessing.com/tutorials/libraries
 I have a number a few examples so far. Here are the links to the live applets. I have had some issues viewing them in Chrome, they seem to work best in Firefox from what I have tested.
 
 <ul>
-  <li><a hef="http://processing.datasingularity.com/p5particles/examples/AttractiveForceExample/applet/">Attractive Forces</a></li>
-  <li><a hef="http://processing.datasingularity.com/p5particles/examples/RepulsiveForceExample/applet/">Repulsive Forces</a></li>
-  <li><a hef="http://processing.datasingularity.com/p5particles/examples/SpringForceExample/applet/">Spring Forces</a></li>
-  <li><a hef="http://processing.datasingularity.com/p5particles/examples/MagneticForceExample/applet/">Magnetic Forces</a></li>
-  <li><a hef="http://processing.datasingularity.com/p5particles/examples/KillingParticlesExample/applet/">Particle Lifecycle</a></li>
+  <li><a href="http://processing.datasingularity.com/p5particles/examples/AttractiveForceExample/applet/">Attractive Forces</a></li>
+  <li><a href="http://processing.datasingularity.com/p5particles/examples/RepulsiveForceExample/applet/">Repulsive Forces</a></li>
+  <li><a href="http://processing.datasingularity.com/p5particles/examples/SpringForceExample/applet/">Spring Forces</a></li>
+  <li><a href="http://processing.datasingularity.com/p5particles/examples/MagneticForceExample/applet/">Magnetic Forces</a></li>
+  <li><a href="http://processing.datasingularity.com/p5particles/examples/KillingParticlesExample/applet/">Particle Lifecycle</a></li>
 </ul>
 
 The library comes with the examples so you can always open them locally.
@@ -54,7 +54,7 @@ You will want to become very familiar with the <a href="http://processing.datasi
 
 For instance, here is how we can create a particle that is rendered as a colored box of specified size:
 
-<script src="https://gist.github.com/772055.js?file=Particle_extention.java"></script>
+<a href="https://gist.github.com/772055.js?file=Particle_extention.java">Particle_extension.java</a>
 
 <hr />
 
