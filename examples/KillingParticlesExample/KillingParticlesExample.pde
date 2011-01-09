@@ -7,9 +7,7 @@
  * <p>
  * This sketch shows you how to kill off particles and track their age.
  * Keep in mind that the system will remove the particle from the 
- * processing/render stack so be careful about maintaining local copies
- * 
- *
+ * processing/render stack so be careful about maintaining local copies.
  * 
  * <p>
  * @author bhelx 01-07-2011

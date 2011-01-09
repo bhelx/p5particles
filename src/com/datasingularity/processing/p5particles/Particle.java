@@ -118,7 +118,7 @@ public class Particle {
 	 * @return
 	 */
 	public final boolean isAlive() {
-		return age <= lifeSpan;
+		return lifeSpan == 0L || age <= lifeSpan;
 	}
 
 	/**
