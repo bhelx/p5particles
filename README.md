@@ -54,7 +54,7 @@ You will want to become very familiar with the <a href="http://processing.datasi
 
 For instance, here is how we can create a particle that is rendered as a colored box of specified size:
 
-<a href="https://gist.github.com/772055.js?file=Particle_extention.java">Particle_extension.java</a>
+<a href="https://gist.github.com/772055">Particle_extension.java</a>
 
 <hr />
 
