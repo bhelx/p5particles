@@ -1,8 +1,8 @@
-Particle Physics System for Processing
+### Particle Physics System for Processing
 
 <hr />
 
-Still working on examples. API is almost there.
+Warning: This has not been touched since 2011
 
 <hr />
 
